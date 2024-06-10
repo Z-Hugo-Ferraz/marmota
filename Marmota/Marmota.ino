@@ -9,7 +9,7 @@ const char* password = STAPSK;
 
 ESP8266WebServer server(80);
 
-static const char htmlAntes[] PROGMEM = "<!DOCTYPE html><html lang=\"pt-br\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><style type=\"text/css\">body {background: #333333;color: #ffffff;font: normal 16px sans-serif;}a {text-decoration: none;color: #ffffff;display: inline-block;background: #9900ff;padding: 10px 20px;border-radius: 5px;}a:hover {background: #8800ee;}a:active {background: #7700dd;}</style><title>Marmota</title></head><body><p><a href=\"/iniciar\">Iniciar!</a></p>";
+static const char htmlAntes[] PROGMEM = "<!DOCTYPE html><html lang=\"pt-br\"><head><meta charset=\"UTF-8\" /><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /><title>Marmota</title><style type=\"text/css\">body {text-align: center;margin-top: 250px;background: url(https://z-hugo-ferraz.github.io/marmota/Marmota/FundoHD.png);}a {text-decoration: none;color: #ffffff;display: inline-block;background: #8d34e0;padding: 10px 20px;border-radius: 5px;font-size: 60px;}a:hover {background: #7700aa;}a:active {background: #0000ff;}.p1 {text-decoration: none;color: #ffffff;display: inline-block;background: #dd00ff;padding: 10px 20px;border-radius: 5px;font-size: 30px}</style></head><body><p><a href=\"/iniciar\">Iniciar!</a></p>";
 static const char htmlDepois[] PROGMEM = "</body></html>\r\n";
 
 void enviarPaginaInicial() {
@@ -130,7 +130,7 @@ void executarJogo() {
   pontos = 0;
   streak = 0;
   erros = 0;
-  maximo = 3;
+  maximo = 10;
   vezAtual = 0;
   tempoAceso = 500;
   pontosPorAcerto = 1;
@@ -151,9 +151,9 @@ void enviarJogo() {
   executarJogo();
 
   server.sendContent(htmlAntes);
-  String resultado = "<p><b>Pontos:</b> ";
+  String resultado = "<p class=\"p1\"><b>Pontos:</b> ";
   resultado += pontos;
-  resultado += "</p><p><b>Erros:</b> ";
+  resultado += " <b>Erros:</b> ";
   resultado += erros;
   resultado += "</p>";
   server.sendContent(resultado);
